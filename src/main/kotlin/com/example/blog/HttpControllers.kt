@@ -1,10 +1,7 @@
 package com.example.blog
 
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
@@ -35,4 +32,17 @@ class UserController(private val repository: UserRepository) {
             HttpStatus.NOT_FOUND,
             "用户不存在"
         )
+}
+
+@RestController
+@RequestMapping("/api/auth")
+class AuthController(private val repository: UserRepository) {
+
+    @PostMapping("/login")
+    fun login(@RequestParam username: String, @RequestParam password: String): CommonResult<out UserVO> {
+        val user = repository.findByUsername(username)
+        if (user == null || user.password != MessageDigestUtils.md5(password))
+            return CommonResult.fail("用户名或密码不正确", HttpStatus.UNAUTHORIZED)
+        return CommonResult.ok(UserVO(user))
+    }
 }

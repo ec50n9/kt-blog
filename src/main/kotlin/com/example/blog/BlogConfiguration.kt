@@ -17,7 +17,7 @@ class BlogConfiguration {
         val ec50n9 = userRepository.save(
             User(
                 "ec50n9",
-                "123456",
+                MessageDigestUtils.md5("1234"),
                 "Gaosong",
                 "Liang"
             )

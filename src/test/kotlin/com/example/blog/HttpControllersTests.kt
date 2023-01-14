@@ -39,10 +39,10 @@ class HttpControllersTests(@Autowired val mockMvc: MockMvc) {
         val juergen = User("springjuergen", "1234", "Juergen", "Hoeller")
         val smaldini = User("smaldini", "1234", "Stéphane", "Maldini")
         every { userRepository.findAll() } returns listOf(juergen, smaldini)
-        mockMvc.perform(get("/api/user/").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/users").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("\$.[0].login").value(juergen.username))
-            .andExpect(jsonPath("\$.[1].login").value(smaldini.username))
+            .andExpect(jsonPath("\$.[0].username").value(juergen.username))
+            .andExpect(jsonPath("\$.[1].username").value(smaldini.username))
     }
 }
