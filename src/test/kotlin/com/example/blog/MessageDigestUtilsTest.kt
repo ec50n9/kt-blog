@@ -1,5 +1,6 @@
 package com.example.blog
 
+import com.example.blog.utils.MessageDigestUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

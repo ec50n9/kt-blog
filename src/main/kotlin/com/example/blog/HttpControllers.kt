@@ -1,6 +1,9 @@
 package com.example.blog
 
+import com.example.blog.utils.JWTUtils
+import com.example.blog.utils.MessageDigestUtils
 import org.springframework.http.HttpStatus
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
@@ -38,11 +41,14 @@ class UserController(private val repository: UserRepository) {
 @RequestMapping("/api/auth")
 class AuthController(private val repository: UserRepository) {
 
+    @LoginRequired
     @PostMapping("/login")
-    fun login(@RequestParam username: String, @RequestParam password: String): CommonResult<out UserVO> {
-        val user = repository.findByUsername(username)
-        if (user == null || user.password != MessageDigestUtils.md5(password))
+    fun login(@Validated @RequestBody userAuthVO: UserAuthVO): CommonResult<out String> {
+        val user = repository.findByUsername(userAuthVO.username!!)
+        if (user == null || user.password != MessageDigestUtils.md5(userAuthVO.password!!))
             return CommonResult.fail("用户名或密码不正确", HttpStatus.UNAUTHORIZED)
-        return CommonResult.ok(UserVO(user))
+        // 生成 token
+        val token = JWTUtils.generateToken(user.username)
+        return CommonResult.ok(token, "登录成功")
     }
 }

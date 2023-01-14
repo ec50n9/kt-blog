@@ -1,5 +1,6 @@
 package com.example.blog
 
+import com.example.blog.utils.MessageDigestUtils
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -16,10 +17,10 @@ class BlogConfiguration {
         MessageDigest.getInstance("MD5")
         val ec50n9 = userRepository.save(
             User(
-                "ec50n9",
-                MessageDigestUtils.md5("1234"),
-                "Gaosong",
-                "Liang"
+                username = "ec50n9",
+                password = MessageDigestUtils.md5("1234"),
+                firstname = "Gaosong",
+                lastname = "Liang"
             )
         )
         articleRepository.save(

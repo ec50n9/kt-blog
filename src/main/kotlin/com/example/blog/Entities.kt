@@ -21,6 +21,7 @@ class Article(
 class User(
     var username: String,
     var password: String,
+    var token: String? = null,
     var firstname: String,
     var lastname: String,
     var description: String? = null,

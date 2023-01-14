@@ -1,4 +1,8 @@
 POST localhost:8080/api/auth/login
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
+token: "ec50n9"
 
-username=ec50n9&password=1234
+{
+  "username": "ec50n9",
+  "password": "1234"
+}
