@@ -15,7 +15,7 @@ class RepositoriesTests @Autowired constructor(
 
     @Test
     fun `When findByIdOrNull then return Article`() {
-        val juergen = User("springjuergen", "1234", "Juergen", "Hoeller")
+        val juergen = User(username = "springjuergen", password = "1234", firstname = "Juergen", lastname = "Hoeller")
         entityManager.persist(juergen)
         val article = Article("Spring Framework 5.0 goes GA", "Dear Spring community ...", "Lorem ipsum", juergen)
         entityManager.persist(article)
@@ -26,7 +26,7 @@ class RepositoriesTests @Autowired constructor(
 
     @Test
     fun `When findByLogin then return User`() {
-        val juergen = User("springjuergen", "1234", "Juergen", "Hoeller")
+        val juergen = User(username = "springjuergen", password = "1234", firstname = "Juergen", lastname = "Hoeller")
         entityManager.persist(juergen)
         entityManager.flush()
         val user = userRepository.findByUsername(juergen.username)

@@ -2,6 +2,7 @@ package com.example.blog
 
 import com.example.blog.utils.JWTUtils
 import com.example.blog.utils.MessageDigestUtils
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -41,7 +42,8 @@ class UserController(private val repository: UserRepository) {
 @RequestMapping("/api/auth")
 class AuthController(private val repository: UserRepository) {
 
-    @LoginRequired
+    private val log = LoggerFactory.getLogger("AuthApi")
+
     @PostMapping("/login")
     fun login(@Validated @RequestBody userAuthVO: UserAuthVO): CommonResult<out String> {
         val user = repository.findByUsername(userAuthVO.username!!)
@@ -50,5 +52,11 @@ class AuthController(private val repository: UserRepository) {
         // 生成 token
         val token = JWTUtils.generateToken(user.username)
         return CommonResult.ok(token, "登录成功")
+    }
+
+    @LoginRequired
+    @GetMapping("/test")
+    fun test() {
+        log.info("测试hhhh")
     }
 }

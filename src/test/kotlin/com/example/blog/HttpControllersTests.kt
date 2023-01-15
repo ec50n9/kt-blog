@@ -21,8 +21,9 @@ class HttpControllersTests(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `List articles`() {
-        val juergen = User("springjuergen", "1234", "Juergen", "Hoeller")
-        val spring5Article = Article("Spring Framework 5.0 goes GA", "Dear Spring community ...", "Lorem ipsum", juergen)
+        val juergen = User(username = "springjuergen", password = "1234", firstname = "Juergen", lastname = "Hoeller")
+        val spring5Article =
+            Article("Spring Framework 5.0 goes GA", "Dear Spring community ...", "Lorem ipsum", juergen)
         val spring43Article = Article("Spring Framework 4.3 goes GA", "Dear Spring community ...", "Lorem ipsum", juergen)
         every { articleRepository.findAllByOrderByAddedAtDesc() } returns listOf(spring5Article, spring43Article)
         mockMvc.perform(get("/api/article/").accept(MediaType.APPLICATION_JSON))
@@ -36,8 +37,8 @@ class HttpControllersTests(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `List users`() {
-        val juergen = User("springjuergen", "1234", "Juergen", "Hoeller")
-        val smaldini = User("smaldini", "1234", "Stéphane", "Maldini")
+        val juergen = User(username = "springjuergen", password = "1234", firstname = "Juergen", lastname = "Hoeller")
+        val smaldini = User(username = "smaldini", password = "1234", firstname = "Stéphane", lastname = "Maldini")
         every { userRepository.findAll() } returns listOf(juergen, smaldini)
         mockMvc.perform(get("/api/users").accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk)

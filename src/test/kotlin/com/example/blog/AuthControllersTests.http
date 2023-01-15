@@ -1,8 +1,11 @@
 POST localhost:8080/api/auth/login
 Content-Type: application/json
-token: "ec50n9"
 
 {
   "username": "ec50n9",
   "password": "1234"
 }
+
+### 登录测试
+GET localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
