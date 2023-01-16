@@ -38,19 +38,29 @@ class AuthenticationInterceptor : HandlerInterceptor {
         // 校验 token
         val username = JWTUtils.decodeTokenAndGetUsername(token)
         if (username == null) {
-            log.error("==========token 解析错误")
+            log.error("==========用户名为空")
             writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 
-        // 获取用户
         val user = userRepository.findByUsername(username)
         if (user == null) {
-            log.info("==========用户 $username 不存在")
-            writeResponse(response, CommonResult.fail("用户 $username 不存在"))
+            log.error("==========用户 $username 不存在")
+            writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 
+        if (user.token != token) {
+            if (user.token == null) {
+                log.error("==========用户未登录")
+            } else {
+                log.error("==========用户在其它地方登录")
+            }
+            writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
+            return false
+        }
+
+        request.setAttribute("user", user)
         return true
     }
 

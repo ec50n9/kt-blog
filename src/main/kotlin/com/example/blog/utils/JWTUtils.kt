@@ -11,8 +11,8 @@ object JWTUtils {
 
     private val log = LoggerFactory.getLogger("JWTUtils")
 
-    val secret = "ec50n9"
-    val expiration: Long = 30 * 60 * 1000
+    private const val secret = "ec50n9"
+    private const val expiration: Long = 30 * 60 * 1000
 
     fun generateToken(username: String): String =
         JWT.create()
@@ -22,6 +22,7 @@ object JWTUtils {
 
     fun decodeTokenAndGetUsername(token: String): String? {
         return try {
+            // 解析token
             val jwt = JWT.decode(token)
             val username = jwt.audience[0]
 
@@ -30,8 +31,10 @@ object JWTUtils {
             verifier.verify(jwt)
             username
         } catch (e: JWTDecodeException) {
+            log.error("token 解析错误: $e")
             null
         } catch (e: JWTVerificationException) {
+            log.error("token 验证错误: $e")
             null
         }
     }

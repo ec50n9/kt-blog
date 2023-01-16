@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
+import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/articles")
@@ -60,9 +61,11 @@ class AuthController(private val repository: UserRepository) {
         return CommonResult.ok(token, "登录成功")
     }
 
+    @LoginRequired
     @PostMapping("/logout")
-    fun logout() {
-
+    fun logout(request: HttpServletRequest) {
+        val user: User = request.getAttribute("user") as User
+        log.info(user.username)
     }
 
     @LoginRequired
