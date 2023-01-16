@@ -2,16 +2,21 @@ package com.example.blog.interceptor
 
 import com.example.blog.CommonResult
 import com.example.blog.LoginRequired
+import com.example.blog.UserRepository
 import com.example.blog.utils.JWTUtils
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 class AuthenticationInterceptor : HandlerInterceptor {
+
+    @Autowired
+    private lateinit var userRepository: UserRepository
 
     private val log: Logger = LoggerFactory.getLogger("Auth")
     private val TOKEN_NAME = "token"
@@ -33,10 +38,19 @@ class AuthenticationInterceptor : HandlerInterceptor {
         // 校验 token
         val username = JWTUtils.decodeTokenAndGetUsername(token)
         if (username == null) {
+            log.error("==========token 解析错误")
             writeResponse(response, CommonResult.fail("无法解析传入的 $TOKEN_NAME"))
             return false
         }
-        log.info("==========username: $username")
+
+        // 获取用户
+        val user = userRepository.findByUsername(username)
+        if (user == null) {
+            log.info("==========用户 $username 不存在")
+            writeResponse(response, CommonResult.fail("用户 $username 不存在"))
+            return false
+        }
+
         return true
     }
 

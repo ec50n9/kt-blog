@@ -56,7 +56,5 @@ class AuthController(private val repository: UserRepository) {
 
     @LoginRequired
     @GetMapping("/test")
-    fun test() {
-        log.info("测试hhhh")
-    }
+    fun test() = CommonResult.ok(null, "你好👋")
 }
