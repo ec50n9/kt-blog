@@ -39,7 +39,7 @@ class AuthenticationInterceptor : HandlerInterceptor {
         val username = JWTUtils.decodeTokenAndGetUsername(token)
         if (username == null) {
             log.error("==========token 解析错误")
-            writeResponse(response, CommonResult.fail("无法解析传入的 $TOKEN_NAME"))
+            writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 

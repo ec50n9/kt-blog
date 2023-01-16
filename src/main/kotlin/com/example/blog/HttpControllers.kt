@@ -49,9 +49,20 @@ class AuthController(private val repository: UserRepository) {
         val user = repository.findByUsername(userAuthVO.username!!)
         if (user == null || user.password != MessageDigestUtils.md5(userAuthVO.password!!))
             return CommonResult.fail("用户名或密码不正确", HttpStatus.UNAUTHORIZED)
+
         // 生成 token
         val token = JWTUtils.generateToken(user.username)
+
+        // 存储token到用户信息中
+        user.token = token
+        repository.save(user)
+
         return CommonResult.ok(token, "登录成功")
+    }
+
+    @PostMapping("/logout")
+    fun logout() {
+
     }
 
     @LoginRequired

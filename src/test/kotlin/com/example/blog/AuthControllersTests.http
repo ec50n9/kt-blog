@@ -8,4 +8,4 @@ Content-Type: application/json
 
 ### 登录测试
 GET localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODA3NjZ9.0612bH33znzG-S0Lnjldj6nhtMN10ELogcAjHQoGU44

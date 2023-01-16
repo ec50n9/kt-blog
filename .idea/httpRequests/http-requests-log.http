@@ -1,4 +1,136 @@
 GET http://localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODA3NjZ9.0612bH33znzG-S0Lnjldj6nhtMN10ELogcAjHQoGU44
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-16T222303.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ec50n9",
+  "password": "1234"
+}
+
+<> 2023-01-16T222246.200.json
+
+###
+
+GET http://localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-16T222216.200.json
+
+###
+
+GET http://localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-16T221350.200.json
+
+###
+
+GET http://localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-16T221238.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ec50n9",
+  "password": "1234"
+}
+
+###
+
+GET http://localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-16T220926.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ec50n9",
+  "password": "1234"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ec50n9",
+  "password": "1234"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ec50n9",
+  "password": "1234"
+}
+
+###
+
+GET http://localhost:8080/api/auth/test
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-16T214830.200.json
+
+###
+
+GET http://localhost:8080/api/auth/test
 token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
@@ -459,184 +591,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
   "password": "1234",
   "token": "666"
 }
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 66
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234",
-  "token": "666"
-}
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Authorization: token "123"
-Content-Length: 66
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234",
-  "token": "666"
-}
-
-<> 2023-01-14T220439.200.json
-
-###
-
-POST https://httpbin.org/post
-Content-Type: application/json
-Content-Length: 32
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "token": "my-secret-token"
-}
-
-<> 2023-01-14T220430.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Authorization: token "123"
-Content-Length: 66
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234",
-  "token": "666"
-}
-
-<> 2023-01-14T220359.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 66
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234",
-  "token": "666"
-}
-
-<> 2023-01-14T220229.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
-
-<> 2023-01-14T220057.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
-
-<> 2023-01-14T212855.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 49
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "12345"
-}
-
-<> 2023-01-14T212852.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 49
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "12345"
-}
-
-<> 2023-01-14T212821.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 46
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "12"
-}
-
-<> 2023-01-14T212816.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 20
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": ""
-}
-
-<> 2023-01-14T212803.200.json
 
 ###
 
