@@ -39,7 +39,8 @@ class GlobalExceptionAdvice {
 
     @ExceptionHandler(Exception::class)
     fun handleException(e: Exception): CommonResponse<Nothing> {
-        log.error("未处理的错误: $e")
+        log.error("未处理的错误:")
+        e.printStackTrace()
         return CommonResponse.fail("服务器内部错误")
     }
 }
