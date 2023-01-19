@@ -1,11 +1,13 @@
 package com.example.blog.controller
 
+import com.example.blog.domain.CommonResponse
+import com.example.blog.domain.dto.ArticleModifyDto
+import com.example.blog.domain.dto.ArticleViewDto
+import com.example.blog.domain.mapper.ArticleMapper
 import com.example.blog.repo.ArticleRepository
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
@@ -16,12 +18,21 @@ class ArticleController(
 ) {
 
     @GetMapping
-    fun findAll() = repository.findAllByOrderByAddedAtDesc()
+    fun findAll() = articleMapper.toDto(articleRepository.findAllByOrderByAddedAtDesc())
 
     @GetMapping("/{slug}")
-    fun findOne(@PathVariable slug: String) =
-        repository.findBySlug(slug) ?: throw ResponseStatusException(
+    fun findOne(@PathVariable slug: String): ArticleViewDto {
+        val article = articleRepository.findBySlug(slug) ?: throw ResponseStatusException(
             HttpStatus.NOT_FOUND,
             "文章不存在"
         )
+        return articleMapper.toDto(article)
+    }
+
+    @PostMapping
+    fun create(@Validated @RequestBody articleModifyDto: ArticleModifyDto): CommonResponse<ArticleViewDto> {
+        val entity = articleMapper.toEntity(articleModifyDto)
+        val article = articleRepository.save(entity)
+        return CommonResponse.ok(articleMapper.toDto(article), "创建成功", HttpStatus.CREATED)
+    }
 }

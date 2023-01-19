@@ -57,3 +57,20 @@ Content-Type: application/json
 
 ### 删除用户
 DELETE localhost:8080/api/users/4
+
+### 文章列表
+GET localhost:8080/api/articles
+
+### 单个文章
+GET localhost:8080/api/articles/reactor-aluminium-has-landed
+
+### 创建文章
+POST localhost:8080/api/articles
+Content-Type: application/json
+
+{
+  "title": "ec50n9 is handsome",
+  "headline": "this is headline",
+  "content": "哈哈哈，今天天气真不错",
+  "authorId": 1
+}
