@@ -15,6 +15,8 @@ import org.springframework.web.server.ResponseStatusException
 @RequestMapping("/api/users")
 class UserController(private val repository: UserRepository) {
 
+    private val userMapper = UserMapper.INSTANCE
+
     @NotResponseAdvice
     @GetMapping
     fun findAll() = UserMapper.INSTANCE.toDto(repository.findAll())
@@ -31,13 +33,30 @@ class UserController(private val repository: UserRepository) {
 
     @PostMapping
     fun create(@Validated @RequestBody modifyDto: UserModifyDto): CommonResponse<UserViewDto> {
-        val userConverter = UserMapper.INSTANCE
-        val userModel = userConverter.toEntity(modifyDto)
+        val entity = userMapper.toEntity(modifyDto)
 
-        if (repository.existsByUsername(userModel.username))
+        if (repository.existsByUsername(entity.username))
             throw ResponseStatusException(HttpStatus.ACCEPTED, "用户名已存在")
 
-        val user = repository.save(userModel)
-        return CommonResponse.ok(userConverter.toDto(user), "创建成功", HttpStatus.CREATED)
+        val user = repository.save(entity)
+        return CommonResponse.ok(userMapper.toDto(user), "创建成功", HttpStatus.CREATED)
+    }
+
+    @PutMapping("/{id}")
+    fun update(@Validated @RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
+        val entity = userMapper.toEntity(modifyDto)
+        entity.id = id
+        val user = repository.save(entity)
+        return CommonResponse.ok(userMapper.toDto(user), "更新成功")
+    }
+
+    @PatchMapping("/{id}")
+    fun patch(@RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
+        val userOptional = repository.findById(id)
+        if (userOptional.isEmpty) throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
+        var user = userOptional.get()
+        userMapper.partialUpdate(modifyDto, user)
+        user = repository.save(user)
+        return CommonResponse.ok(userMapper.toDto(user), "更新成功")
     }
 }

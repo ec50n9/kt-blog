@@ -34,3 +34,23 @@ Content-Type: application/json
   "firstname": "Yanqiong",
   "lastname": "Tan"
 }
+
+### 更新用户
+PUT localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "username": "shello",
+  "password": "6666",
+  "firstname": "gogo",
+  "lastname": "let"
+}
+
+### 补丁更新用户
+PATCH localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "username": "ec50n9",
+  "description": "你好，世界"
+}
