@@ -1,592 +1,559 @@
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Content-Length: 0
+GET http://localhost:8080/api/users
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
+<> 2023-01-19T183055.200.json
+
 ###
 
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Content-Length: 0
+GET http://localhost:8080/api/users
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
+<> 2023-01-19T183006.200.json
+
 ###
 
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Content-Length: 0
+GET http://localhost:8080/api/users/sugar
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T231012.200.json
+<> 2023-01-19T174643.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T231011.200.json
-
-###
-
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM2MDV9.pwtmrCHYdSoIXP4Zr84ANsKkWpUlaUNlV-hKdrd6xXI
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T231005.200.json
+<> 2023-01-19T174638.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T174635.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T174633.200.json
+
+###
+
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T174450.200.json
+
+###
+
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T172338.200.json
+
+###
+
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230952.200.json
+<> 2023-01-19T172054.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230951.200.json
+<> 2023-01-19T172050.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: {{auth_token}}
+GET http://localhost:8080/api/users/sugar
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T230945-1.200.json
+<> 2023-01-19T172048.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: {{auth_token}}
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T230945.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230942.200.json
+<> 2023-01-19T170941.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T170937.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T170936.200.json
+
+###
+
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230919.200.json
+<> 2023-01-19T170934.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T170931.200.json
+
+###
+
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T170928.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T170400.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T170359.200.json
+
+###
+
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230918.200.json
+<> 2023-01-19T170357.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: {{auth_token}}
+GET http://localhost:8080/api/users/sugar
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T230903.200.json
+<> 2023-01-19T170355.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: {{auth_token}}
+GET http://localhost:8080/api/users/ec50n9
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T230902.200.json
+<> 2023-01-19T170350.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T165528.200.json
+
+###
+
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T164752.200.json
+
+###
+
+GET http://localhost:8080/api/users/ec50n9
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T164716.200.json
+
+###
+
+GET http://localhost:8080/api/users/ec50n9
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T164453.200.json
+
+###
+
+GET http://localhost:8080/api/users/ec50n9
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T164252.200.json
+
+###
+
+GET http://localhost:8080/api/users/ec50n9
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T164105.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T164059.200.json
+
+###
+
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230857.200.json
+<> 2023-01-19T163958.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: {{auth_token}}
+GET http://localhost:8080/api/users/sugar
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T230855.200.json
+<> 2023-01-19T163953.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM0MjR9.y7Jh5NJFXd2R9YVi0kfY4IRyhxLNoo6UBA6-SU7PKJE
-Content-Length: 0
+GET http://localhost:8080/api/users
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
+<> 2023-01-19T163736.200.json
+
 ###
 
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODM0MjR9.y7Jh5NJFXd2R9YVi0kfY4IRyhxLNoo6UBA6-SU7PKJE
-Content-Length: 0
+GET http://localhost:8080/api/users/sugar
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
+<> 2023-01-19T155241.200.json
+
 ###
 
-POST http://localhost:8080/api/auth/login
+GET http://localhost:8080/api/users/sugara
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T155231.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugara
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T154956.200.json
+
+###
+
+GET http://localhost:8080/api/users/sugar
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T154952.200.json
+
+###
+
+GET http://localhost:8080/api/users/ec50n9
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T154947.200.json
+
+###
+
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T230704.200.json
+<> 2023-01-19T154929.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODMzMjR9.SwoGqzJVGJc9NkgzyAWvzLUzXWkzrhJ7XZSYveYH54Q
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODMzMjR9.SwoGqzJVGJc9NkgzyAWvzLUzXWkzrhJ7XZSYveYH54Q
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 74
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong"
 }
 
-<> 2023-01-16T230524.200.json
+<> 2023-01-19T154908.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/logout
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
-Content-Length: 0
+GET http://localhost:8080/api/users
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T230521.200.json
+<> 2023-01-19T154905.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/logout
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T230508.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T230442.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T225937.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T225935.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 75
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
 }
 
-<> 2023-01-16T225933.200.json
+<> 2023-01-19T154858.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
+GET http://localhost:8080/api/users
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T225925.200.json
+<> 2023-01-19T154852.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T225018.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 75
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
 }
-
-<> 2023-01-16T225016.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 75
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
 }
-
-<> 2023-01-16T225012.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODIzOTR9.DntkDXwxOKA0iS7VBqolaWjuDXd9Wka8Bof4DSi23GE
+GET http://localhost:8080/api/users/ec50n9
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T225007.200.json
+<> 2023-01-19T154445.200.json
 
 ###
 
-POST http://localhost:8080/api/auth/login
+GET http://localhost:8080/api/users/ec50n9
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T154204.200.json
+
+###
+
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T154131.200.json
+
+###
+
+GET http://localhost:8080/api/users
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-01-19T125950.200.json
+
+###
+
+POST http://localhost:8080/api/users
 Content-Type: application/json
-Content-Length: 48
+Content-Length: 95
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 {
-  "username": "ec50n9",
-  "password": "1234"
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
 }
 
-<> 2023-01-16T224954.200.json
+<> 2023-01-19T125948.200.json
 
 ###
 
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODA3NjZ9.0612bH33znzG-S0Lnjldj6nhtMN10ELogcAjHQoGU44
+GET http://localhost:8080/api/users
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
-<> 2023-01-16T224905.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODA3NjZ9.0612bH33znzG-S0Lnjldj6nhtMN10ELogcAjHQoGU44
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T224837.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODA3NjZ9.0612bH33znzG-S0Lnjldj6nhtMN10ELogcAjHQoGU44
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T224731.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM4ODA3NjZ9.0612bH33znzG-S0Lnjldj6nhtMN10ELogcAjHQoGU44
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T222303.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
-
-<> 2023-01-16T222246.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T222216.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T221350.200.json
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T221238.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
-
-###
-
-GET http://localhost:8080/api/auth/test
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzUwbjkiLCJleHAiOjE2NzM3OTQ0NjF9.PDypcf-EIKc0iSvw3p8fStcqKYCGLbgUlUxzkV0U_Nw
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-01-16T220926.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-Content-Length: 48
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ec50n9",
-  "password": "1234"
-}
+<> 2023-01-19T125942.200.json
 
 ###
 

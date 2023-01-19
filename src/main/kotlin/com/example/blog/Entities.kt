@@ -1,10 +1,7 @@
 package com.example.blog
 
 import java.time.LocalDateTime
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 @Entity
 class Article(
@@ -19,7 +16,7 @@ class Article(
 
 @Entity
 class User(
-    var username: String,
+    @Column(unique = true) var username: String,
     var password: String,
     var token: String? = null,
     var firstname: String,

@@ -33,6 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.auth0:java-jwt:4.2.1")
     implementation("org.springframework.boot:spring-boot-starter-validation:3.0.1")
+    implementation("org.mapstruct:mapstruct:1.5.3.Final")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
@@ -46,6 +47,7 @@ dependencies {
     testImplementation("com.ninja-squad:springmockk:4.0.0")
 
     kapt("org.springframework.boot:spring-boot-configuration-processor")
+    kapt("org.mapstruct:mapstruct-processor:1.5.3.Final")
 }
 
 tasks.withType<KotlinCompile> {

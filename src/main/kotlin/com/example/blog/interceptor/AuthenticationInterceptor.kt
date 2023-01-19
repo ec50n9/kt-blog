@@ -1,8 +1,8 @@
 package com.example.blog.interceptor
 
-import com.example.blog.CommonResult
-import com.example.blog.LoginRequired
 import com.example.blog.UserRepository
+import com.example.blog.annotation.LoginRequired
+import com.example.blog.domain.CommonResponse
 import com.example.blog.utils.JWTUtils
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.Logger
@@ -30,7 +30,7 @@ class AuthenticationInterceptor : HandlerInterceptor {
         // 获取 token
         val token = request.getHeader(TOKEN_NAME)
         if (null == token || "" == token.trim()) {
-            writeResponse(response, CommonResult.fail("缺少 $TOKEN_NAME 字段"))
+            writeResponse(response, CommonResponse.fail("缺少 $TOKEN_NAME 字段"))
             return false
         }
         log.info("==========token: $token")
@@ -39,14 +39,14 @@ class AuthenticationInterceptor : HandlerInterceptor {
         val username = JWTUtils.decodeTokenAndGetUsername(token)
         if (username == null) {
             log.error("==========用户名为空")
-            writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
+            writeResponse(response, CommonResponse.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 
         val user = userRepository.findByUsername(username)
         if (user == null) {
             log.error("==========用户 $username 不存在")
-            writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
+            writeResponse(response, CommonResponse.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 
@@ -56,7 +56,7 @@ class AuthenticationInterceptor : HandlerInterceptor {
             } else {
                 log.error("==========用户在其它地方登录")
             }
-            writeResponse(response, CommonResult.fail("传入的 $TOKEN_NAME 无效"))
+            writeResponse(response, CommonResponse.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 
@@ -75,7 +75,7 @@ class AuthenticationInterceptor : HandlerInterceptor {
         return requirePermission != null && requirePermission.required
     }
 
-    private fun <T> writeResponse(response: HttpServletResponse, result: CommonResult<T>) {
+    private fun <T> writeResponse(response: HttpServletResponse, result: CommonResponse<T>) {
         response.characterEncoding = "UTF-8"
         response.contentType = "application/json; charset=utf-8"
         val writer = response.writer

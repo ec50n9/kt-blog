@@ -17,3 +17,20 @@ token: {{auth_token}}
 ### 退出登录
 POST localhost:8080/api/auth/logout
 token: {{auth_token}}
+
+### 用户列表
+GET localhost:8080/api/users
+
+### 单个用户
+GET localhost:8080/api/users/sugar
+
+### 创建用户
+POST localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "sugar",
+  "password": "1234",
+  "firstname": "Yanqiong",
+  "lastname": "Tan"
+}
