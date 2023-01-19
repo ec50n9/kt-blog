@@ -9,11 +9,6 @@ import org.mapstruct.factory.Mappers
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 abstract class UserMapper {
 
-    companion object {
-        val INSTANCE: UserMapper = Mappers.getMapper(UserMapper::class.java)
-
-    }
-
     abstract fun toDto(user: User): UserViewDto
 
     abstract fun toDto(users: Iterable<User>): Iterable<UserViewDto>
