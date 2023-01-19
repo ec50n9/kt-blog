@@ -6,6 +6,7 @@ import com.example.blog.domain.dto.UserModifyDto
 import com.example.blog.domain.dto.UserViewDto
 import com.example.blog.domain.mapper.UserMapper
 import com.example.blog.repo.UserRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -53,9 +54,8 @@ class UserController(
 
     @PatchMapping("/{id}")
     fun patch(@RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
-        val userOptional = userRepository.findById(id)
-        if (userOptional.isEmpty) throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
-        var user = userOptional.get()
+        var user =
+            userRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
         userMapper.partialUpdate(modifyDto, user)
         user = userRepository.save(user)
         return CommonResponse.ok(userMapper.toDto(user), "更新成功")
