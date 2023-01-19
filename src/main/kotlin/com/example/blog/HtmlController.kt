@@ -1,5 +1,8 @@
 package com.example.blog
 
+import com.example.blog.domain.Article
+import com.example.blog.domain.User
+import com.example.blog.repo.ArticleRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model

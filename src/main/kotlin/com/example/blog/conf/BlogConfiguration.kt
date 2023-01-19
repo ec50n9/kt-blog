@@ -1,5 +1,9 @@
-package com.example.blog
+package com.example.blog.conf
 
+import com.example.blog.domain.Article
+import com.example.blog.domain.User
+import com.example.blog.repo.ArticleRepository
+import com.example.blog.repo.UserRepository
 import com.example.blog.utils.MessageDigestUtils
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean

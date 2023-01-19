@@ -3,7 +3,9 @@ package com.example.blog.controller
 import com.example.blog.*
 import com.example.blog.annotation.LoginRequired
 import com.example.blog.domain.CommonResponse
+import com.example.blog.domain.User
 import com.example.blog.domain.dto.UserAuthDto
+import com.example.blog.repo.UserRepository
 import com.example.blog.utils.JWTUtils
 import com.example.blog.utils.MessageDigestUtils
 import org.slf4j.LoggerFactory

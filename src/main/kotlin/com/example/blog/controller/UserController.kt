@@ -1,11 +1,11 @@
 package com.example.blog.controller
 
-import com.example.blog.UserRepository
 import com.example.blog.annotation.NotResponseAdvice
 import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.dto.UserModifyDto
 import com.example.blog.domain.dto.UserViewDto
 import com.example.blog.domain.mapper.UserMapper
+import com.example.blog.repo.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*

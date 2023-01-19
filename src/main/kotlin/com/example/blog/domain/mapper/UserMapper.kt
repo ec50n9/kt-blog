@@ -1,6 +1,6 @@
 package com.example.blog.domain.mapper
 
-import com.example.blog.User
+import com.example.blog.domain.User
 import com.example.blog.domain.dto.UserModifyDto
 import com.example.blog.domain.dto.UserViewDto
 import org.mapstruct.*

@@ -1,5 +1,6 @@
-package com.example.blog
+package com.example.blog.domain
 
+import com.example.blog.toSlug
 import java.time.LocalDateTime
 import javax.persistence.*
 
