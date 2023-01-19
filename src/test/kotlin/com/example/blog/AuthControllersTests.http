@@ -54,3 +54,6 @@ Content-Type: application/json
   "username": "ec50n9",
   "description": "你好，世界"
 }
+
+### 删除用户
+DELETE localhost:8080/api/users/4

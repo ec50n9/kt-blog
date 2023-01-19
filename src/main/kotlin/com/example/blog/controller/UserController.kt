@@ -13,17 +13,17 @@ import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/users")
-class UserController(private val repository: UserRepository) {
+class UserController(private val userRepository: UserRepository) {
 
     private val userMapper = UserMapper.INSTANCE
 
     @NotResponseAdvice
     @GetMapping
-    fun findAll() = UserMapper.INSTANCE.toDto(repository.findAll())
+    fun findAll() = UserMapper.INSTANCE.toDto(userRepository.findAll())
 
     @GetMapping("/{username}")
     fun findOne(@PathVariable username: String): UserViewDto {
-        val user = repository.findByUsername(username)
+        val user = userRepository.findByUsername(username)
             ?: throw ResponseStatusException(
                 HttpStatus.NOT_FOUND,
                 "用户不存在"
@@ -35,10 +35,10 @@ class UserController(private val repository: UserRepository) {
     fun create(@Validated @RequestBody modifyDto: UserModifyDto): CommonResponse<UserViewDto> {
         val entity = userMapper.toEntity(modifyDto)
 
-        if (repository.existsByUsername(entity.username))
+        if (userRepository.existsByUsername(entity.username))
             throw ResponseStatusException(HttpStatus.ACCEPTED, "用户名已存在")
 
-        val user = repository.save(entity)
+        val user = userRepository.save(entity)
         return CommonResponse.ok(userMapper.toDto(user), "创建成功", HttpStatus.CREATED)
     }
 
@@ -46,17 +46,26 @@ class UserController(private val repository: UserRepository) {
     fun update(@Validated @RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
         val entity = userMapper.toEntity(modifyDto)
         entity.id = id
-        val user = repository.save(entity)
+        val user = userRepository.save(entity)
         return CommonResponse.ok(userMapper.toDto(user), "更新成功")
     }
 
     @PatchMapping("/{id}")
     fun patch(@RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
-        val userOptional = repository.findById(id)
+        val userOptional = userRepository.findById(id)
         if (userOptional.isEmpty) throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
         var user = userOptional.get()
         userMapper.partialUpdate(modifyDto, user)
-        user = repository.save(user)
+        user = userRepository.save(user)
         return CommonResponse.ok(userMapper.toDto(user), "更新成功")
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: Long): CommonResponse<Nothing> {
+        val userOptional = userRepository.findById(id)
+        if (userOptional.isEmpty) throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
+        val user = userOptional.get()
+        userRepository.delete(user)
+        return CommonResponse.ok(null, "删除成功")
     }
 }
