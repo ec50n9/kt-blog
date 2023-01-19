@@ -13,9 +13,10 @@ import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/users")
-class UserController(private val userRepository: UserRepository) {
-
-    private val userMapper = UserMapper.INSTANCE
+class UserController(
+    private val userRepository: UserRepository,
+    private val userMapper: UserMapper
+) {
 
     @NotResponseAdvice
     @GetMapping

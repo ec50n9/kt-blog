@@ -10,7 +10,10 @@ import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/articles")
-class ArticleController(private val repository: ArticleRepository) {
+class ArticleController(
+    private val articleRepository: ArticleRepository,
+    private val articleMapper: ArticleMapper
+) {
 
     @GetMapping
     fun findAll() = repository.findAllByOrderByAddedAtDesc()
