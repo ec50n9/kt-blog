@@ -10,6 +10,13 @@ plugins {
     kotlin("plugin.allopen") version "1.6.21"
 }
 
+kapt {
+    arguments {
+        arg("mapstruct.unmappedTargetPolicy", "ignore")
+    }
+    keepJavacAnnotationProcessors = true
+}
+
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
@@ -18,7 +25,7 @@ repositories {
     mavenCentral()
 }
 
-allOpen{
+allOpen {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.Embeddable")
     annotation("javax.persistence.MappedSuperclass")

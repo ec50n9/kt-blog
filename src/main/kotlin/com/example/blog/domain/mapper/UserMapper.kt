@@ -3,10 +3,12 @@ package com.example.blog.domain.mapper
 import com.example.blog.domain.User
 import com.example.blog.domain.dto.UserModifyDto
 import com.example.blog.domain.dto.UserViewDto
-import org.mapstruct.*
-import org.mapstruct.factory.Mappers
+import org.mapstruct.BeanMapping
+import org.mapstruct.Mapper
+import org.mapstruct.MappingTarget
+import org.mapstruct.NullValuePropertyMappingStrategy
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(componentModel = "spring")
 abstract class UserMapper {
 
     abstract fun toDto(user: User): UserViewDto
