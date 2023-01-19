@@ -21,7 +21,7 @@ class UserController(
 
     @NotResponseAdvice
     @GetMapping
-    fun findAll() = UserMapper.INSTANCE.toDto(userRepository.findAll())
+    fun findAll() = userMapper.toDto(userRepository.findAll())
 
     @GetMapping("/{username}")
     fun findOne(@PathVariable username: String): UserViewDto {
@@ -30,7 +30,7 @@ class UserController(
                 HttpStatus.NOT_FOUND,
                 "用户不存在"
             )
-        return UserMapper.INSTANCE.toDto(user)
+        return userMapper.toDto(user)
     }
 
     @PostMapping
