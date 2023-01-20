@@ -41,6 +41,7 @@ dependencies {
     implementation("com.auth0:java-jwt:4.2.1")
     implementation("org.springframework.boot:spring-boot-starter-validation:3.0.1")
     implementation("org.mapstruct:mapstruct:1.5.3.Final")
+    implementation("com.soywiz.korlibs.krypto:krypto:3.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
