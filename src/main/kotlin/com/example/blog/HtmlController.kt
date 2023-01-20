@@ -19,6 +19,7 @@ class HtmlController(
 ) {
 
     data class RenderedArticle(
+        val id: String,
         val title: String,
         val headline: String,
         val content: String,
@@ -27,6 +28,7 @@ class HtmlController(
     )
 
     fun Article.render() = RenderedArticle(
+        id ?: "",
         title,
         headline,
         content,
