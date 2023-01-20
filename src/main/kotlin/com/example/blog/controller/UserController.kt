@@ -7,6 +7,8 @@ import com.example.blog.domain.dto.UserModifyDto
 import com.example.blog.domain.dto.UserViewDto
 import com.example.blog.domain.mapper.UserMapper
 import com.example.blog.repo.UserRepository
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
@@ -22,7 +24,14 @@ class UserController(
 
     @NotResponseAdvice
     @GetMapping
-    fun findAll() = userMapper.toDto(userRepository.findAll())
+    fun findAll(
+        @RequestParam(defaultValue = "1") page: Int,
+        @RequestParam(defaultValue = "10") size: Int
+    ): Iterable<UserViewDto> {
+        val pageRequest = PageRequest.of(page, size, Sort.by("username"))
+        val userList = userRepository.findAll(pageRequest)
+        return userMapper.toDto(userList)
+    }
 
     @GetMapping("/{username}")
     fun findOne(@PathVariable username: String): UserViewDto {
