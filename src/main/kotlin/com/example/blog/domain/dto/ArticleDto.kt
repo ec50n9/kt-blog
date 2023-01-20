@@ -12,7 +12,7 @@ data class ArticleViewDto(
     var author: UserViewDto? = null,
     var slug: String? = title?.toSlug(),
     var addedAt: LocalDateTime = LocalDateTime.now(),
-    var id: Long? = null
+    var id: String? = null
 ) : Serializable
 
 data class ArticleModifyDto(

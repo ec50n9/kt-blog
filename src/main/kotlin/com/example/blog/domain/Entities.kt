@@ -1,8 +1,20 @@
 package com.example.blog.domain
 
 import com.example.blog.toSlug
+import com.example.blog.utils.NanoIdUtils
+import org.hibernate.annotations.GenericGenerator
+import org.hibernate.engine.spi.SharedSessionContractImplementor
+import org.hibernate.id.IdentifierGenerator
+import java.io.Serializable
 import java.time.LocalDateTime
 import javax.persistence.*
+
+class NanoIdGenerator : IdentifierGenerator {
+    override fun generate(session: SharedSessionContractImplementor?, `object`: Any?): Serializable {
+        return NanoIdUtils.randomNanoId()
+    }
+
+}
 
 @Entity
 class Article(
@@ -12,7 +24,11 @@ class Article(
     @ManyToOne var author: User,
     var slug: String = title.toSlug(),
     var addedAt: LocalDateTime = LocalDateTime.now(),
-    @Id @GeneratedValue var id: Long? = null
+
+    @Id
+    @GenericGenerator(name = "nanoIdGenerator", strategy = "com.example.blog.domain.NanoIdGenerator")
+    @GeneratedValue(generator = "nanoIdGenerator", strategy = GenerationType.SEQUENCE)
+    var id: String? = null
 )
 
 @Entity

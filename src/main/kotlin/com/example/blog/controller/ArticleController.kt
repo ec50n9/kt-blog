@@ -7,6 +7,8 @@ import com.example.blog.domain.dto.ArticleModifyDto
 import com.example.blog.domain.dto.ArticleViewDto
 import com.example.blog.domain.mapper.ArticleMapper
 import com.example.blog.repo.ArticleRepository
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
@@ -22,7 +24,14 @@ class ArticleController(
 ) {
 
     @GetMapping
-    fun findAll() = articleMapper.toDto(articleRepository.findAllByOrderByAddedAtDesc())
+    fun findAll(
+        @RequestParam(defaultValue = "1") page: Int,
+        @RequestParam(defaultValue = "10") size: Int
+    ): Iterable<ArticleViewDto> {
+        val pageRequest = PageRequest.of(page - 1, size, Sort.by("addedAt"))
+        val articleList = articleRepository.findAll(pageRequest)
+        return articleMapper.toDto(articleList)
+    }
 
     @GetMapping("/{slug}")
     fun findOne(@PathVariable slug: String): ArticleViewDto {
@@ -52,7 +61,7 @@ class ArticleController(
 
     fun updateArticle(
         request: HttpServletRequest,
-        id: Long,
+        id: String,
         modifyDto: ArticleModifyDto
     ): CommonResponse<ArticleViewDto> {
         var article =
@@ -72,20 +81,20 @@ class ArticleController(
     fun update(
         request: HttpServletRequest,
         @Validated @RequestBody modifyDto: ArticleModifyDto,
-        @PathVariable id: Long
+        @PathVariable id: String
     ) = updateArticle(request, id, modifyDto)
 
     @LoginRequired
     @PatchMapping("/{id}")
     fun patch(
         request: HttpServletRequest,
-        @PathVariable id: Long,
+        @PathVariable id: String,
         @RequestBody modifyDto: ArticleModifyDto
     ) = updateArticle(request, id, modifyDto)
 
     @LoginRequired
     @DeleteMapping("/{id}")
-    fun delete(request: HttpServletRequest, @PathVariable id: Long): CommonResponse<Nothing> {
+    fun delete(request: HttpServletRequest, @PathVariable id: String): CommonResponse<Nothing> {
         val article =
             articleRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "文章不存在")
 
