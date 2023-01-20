@@ -1,5 +1,6 @@
 package com.example.blog.controller
 
+import com.example.blog.annotation.LoginRequired
 import com.example.blog.annotation.NotResponseAdvice
 import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.dto.UserModifyDto
@@ -33,6 +34,7 @@ class UserController(
         return userMapper.toDto(user)
     }
 
+    @LoginRequired
     @PostMapping
     fun create(@Validated @RequestBody modifyDto: UserModifyDto): CommonResponse<UserViewDto> {
         val entity = userMapper.toEntity(modifyDto)
@@ -44,6 +46,7 @@ class UserController(
         return CommonResponse.ok(userMapper.toDto(user), "创建成功", HttpStatus.CREATED)
     }
 
+    @LoginRequired
     @PutMapping("/{id}")
     fun update(@Validated @RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
         val entity = userMapper.toEntity(modifyDto)
@@ -52,6 +55,7 @@ class UserController(
         return CommonResponse.ok(userMapper.toDto(user), "更新成功")
     }
 
+    @LoginRequired
     @PatchMapping("/{id}")
     fun patch(@RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
         var user =
@@ -61,11 +65,11 @@ class UserController(
         return CommonResponse.ok(userMapper.toDto(user), "更新成功")
     }
 
+    @LoginRequired
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long): CommonResponse<Nothing> {
-        val userOptional = userRepository.findById(id)
-        if (userOptional.isEmpty) throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
-        val user = userOptional.get()
+        val user =
+            userRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
         userRepository.delete(user)
         return CommonResponse.ok(null, "删除成功")
     }

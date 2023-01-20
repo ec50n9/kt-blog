@@ -4,7 +4,10 @@ import com.example.blog.domain.Article
 import com.example.blog.domain.dto.ArticleModifyDto
 import com.example.blog.domain.dto.ArticleViewDto
 import com.example.blog.repo.UserRepository
-import org.mapstruct.*
+import org.mapstruct.BeanMapping
+import org.mapstruct.Mapper
+import org.mapstruct.MappingTarget
+import org.mapstruct.NullValuePropertyMappingStrategy
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
@@ -26,7 +29,7 @@ abstract class ArticleMapper {
 
     abstract fun toDto(articleIterable: Iterable<Article>): Iterable<ArticleViewDto>
 
-    @Mapping(source = "authorId", target = "author")
+//    @Mapping(source = "authorId", target = "author")
     abstract fun toEntity(articleModifyDto: ArticleModifyDto): Article
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

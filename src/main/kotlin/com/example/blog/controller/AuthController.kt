@@ -39,7 +39,7 @@ class AuthController(private val repository: UserRepository) {
     @LoginRequired
     @PostMapping("/logout")
     fun logout(request: HttpServletRequest) {
-        val user: User = request.getAttribute("user") as User
+        val user = request.getAttribute("user") as User
         user.token = null
         repository.save(user)
     }

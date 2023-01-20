@@ -4,7 +4,6 @@ import com.example.blog.toSlug
 import java.io.Serializable
 import java.time.LocalDateTime
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotNull
 
 data class ArticleViewDto(
     var title: String? = null,
@@ -23,8 +22,6 @@ data class ArticleModifyDto(
     var headline: String? = null,
     @field:NotBlank(message = "内容不能为空")
     var content: String? = null,
-    @field:NotNull(message = "作者不能为空")
-    var authorId: Long? = null,
     var slug: String? = title?.toSlug(),
     var addedAt: LocalDateTime = LocalDateTime.now()
 )

@@ -74,3 +74,27 @@ Content-Type: application/json
   "content": "哈哈哈，今天天气真不错",
   "authorId": 1
 }
+
+### 更新文章
+PUT localhost:8080/api/articles/4
+Content-Type: application/json
+
+{
+  "title": "哈哈哈",
+  "headline": "this is headline",
+  "content": "哈哈哈，今天天气真不错",
+  "authorId": 1,
+  "slug": "hello"
+}
+
+### 补丁更新文章
+PATCH localhost:8080/api/articles/4
+Content-Type: application/json
+
+{
+  "slug": "gogogo"
+}
+
+### 删除文章
+DELETE localhost:8080/api/articles/3
+token: {{auth_token}}
