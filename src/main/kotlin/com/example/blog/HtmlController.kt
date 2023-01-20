@@ -3,6 +3,7 @@ package com.example.blog
 import com.example.blog.domain.Article
 import com.example.blog.domain.User
 import com.example.blog.repo.ArticleRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -18,7 +19,6 @@ class HtmlController(
 ) {
 
     data class RenderedArticle(
-        val slug: String,
         val title: String,
         val headline: String,
         val content: String,
@@ -27,7 +27,6 @@ class HtmlController(
     )
 
     fun Article.render() = RenderedArticle(
-        slug,
         title,
         headline,
         content,
@@ -43,10 +42,10 @@ class HtmlController(
         return "blog"
     }
 
-    @GetMapping("/article/{slug}")
-    fun article(@PathVariable slug: String, model: Model): String {
+    @GetMapping("/article/{id}")
+    fun article(@PathVariable id: String, model: Model): String {
         val article = repository
-            .findBySlug(slug)
+            .findByIdOrNull(id)
             ?.render()
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This article dose not exist")
         model["title"] = article.title

@@ -33,9 +33,9 @@ class ArticleController(
         return articleMapper.toDto(articleList)
     }
 
-    @GetMapping("/{slug}")
-    fun findOne(@PathVariable slug: String): ArticleViewDto {
-        val article = articleRepository.findBySlug(slug) ?: throw ResponseStatusException(
+    @GetMapping("/{id}")
+    fun findOne(@PathVariable id: String): ArticleViewDto {
+        val article = articleRepository.findByIdOrNull(id) ?: throw ResponseStatusException(
             HttpStatus.NOT_FOUND,
             "文章不存在"
         )

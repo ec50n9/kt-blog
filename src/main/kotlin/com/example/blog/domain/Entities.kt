@@ -1,6 +1,5 @@
 package com.example.blog.domain
 
-import com.example.blog.toSlug
 import com.example.blog.utils.NanoIdUtils
 import org.hibernate.annotations.GenericGenerator
 import org.hibernate.engine.spi.SharedSessionContractImplementor
@@ -13,7 +12,6 @@ class NanoIdGenerator : IdentifierGenerator {
     override fun generate(session: SharedSessionContractImplementor?, `object`: Any?): Serializable {
         return NanoIdUtils.randomNanoId()
     }
-
 }
 
 @Entity
@@ -22,7 +20,6 @@ class Article(
     var headline: String,
     var content: String,
     @ManyToOne var author: User,
-    var slug: String = title.toSlug(),
     var addedAt: LocalDateTime = LocalDateTime.now(),
 
     @Id

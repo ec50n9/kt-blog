@@ -59,42 +59,43 @@ Content-Type: application/json
 DELETE localhost:8080/api/users/4
 
 ### 文章列表
-GET localhost:8080/api/articles
+GET localhost:8080/api/articles?page=1
 
 ### 单个文章
-GET localhost:8080/api/articles/reactor-aluminium-has-landed
+GET localhost:8080/api/articles/2h_oZ4Sd4SaSVdNNClI6y
 
 ### 创建文章
 POST localhost:8080/api/articles
 Content-Type: application/json
+token: {{auth_token}}
 
 {
   "title": "ec50n9 is handsome",
   "headline": "this is headline",
-  "content": "哈哈哈，今天天气真不错",
-  "authorId": 1
+  "content": "哈哈哈，今天天气真不错"
 }
 
 ### 更新文章
-PUT localhost:8080/api/articles/4
+PUT localhost:8080/api/articles/2h_oZ4Sd4SaSVdNNClI6y
 Content-Type: application/json
+token: {{auth_token}}
 
 {
   "title": "哈哈哈",
   "headline": "this is headline",
   "content": "哈哈哈，今天天气真不错",
-  "authorId": 1,
-  "slug": "hello"
+  "authorId": 1
 }
 
 ### 补丁更新文章
-PATCH localhost:8080/api/articles/4
+PATCH localhost:8080/api/articles/2h_oZ4Sd4SaSVdNNClI6y
 Content-Type: application/json
+token: {{auth_token}}
 
 {
-  "slug": "gogogo"
+  "title": "我是心标题"
 }
 
 ### 删除文章
-DELETE localhost:8080/api/articles/3
+DELETE localhost:8080/api/articles/2h_oZ4Sd4SaSVdNNClI6y
 token: {{auth_token}}

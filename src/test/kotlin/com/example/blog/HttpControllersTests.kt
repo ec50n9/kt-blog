@@ -34,9 +34,7 @@ class HttpControllersTests(@Autowired val mockMvc: MockMvc) {
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("\$.[0].author.login").value(juergen.username))
-            .andExpect(jsonPath("\$.[0].slug").value(spring5Article.slug))
             .andExpect(jsonPath("\$.[1].author.login").value(juergen.username))
-            .andExpect(jsonPath("\$.[1].slug").value(spring43Article.slug))
     }
 
     @Test
