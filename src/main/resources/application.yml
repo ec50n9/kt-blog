@@ -10,8 +10,15 @@ spring:
         globally_quoted_identifiers: true
         globally_quoted_identifiers_skip_column_definitions: true
 
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+
 blog:
-  title: Blog
+  title: ec50n9 的小世界
   banner:
-    title: Warning
-    content: The blog will be down tomorrow
+    title: 警告
+    content: 博客明天就会关闭
