@@ -37,9 +37,18 @@ class BlogConfiguration {
         )
         articleRepository.save(
             Article(
-                title = "Reactor Aluminium has landed",
-                headline = "Lorem ipsum",
-                content = "dolor sit amet",
+                title = "Vue 的 diff 算法是什么？",
+                headline = "大家或多或少都听说过 diff 算法，那么它到底是啥呢？",
+                content = """# 今天天气不错哦
+                    |## 这是二级标题
+                    |* aaaaa
+                    |* bbbbb
+                    |* ccccc
+                    |> 你觉得今天怎么样呢
+                    |```shell
+                    |echo 'hello, wrold'
+                    |```
+                """.trimMargin(),
                 author = ec50n9
             )
         )

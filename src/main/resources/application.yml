@@ -18,7 +18,7 @@ server:
       enabled: true
 
 blog:
-  title: ec50n9 的小世界
+  title: Blog
   banner:
-    title: 警告
-    content: 博客明天就会关闭
+    title: Warning
+    content: The blog will be down tomorrow
