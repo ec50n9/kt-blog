@@ -44,4 +44,4 @@ class CurrentUserArgumentResolver : HandlerMethodArgumentResolver {
 
 @Target(AnnotationTarget.VALUE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class CurrentUser()
+annotation class CurrentUser
