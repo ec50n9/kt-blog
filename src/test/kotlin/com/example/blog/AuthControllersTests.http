@@ -76,7 +76,7 @@ token: {{auth_token}}
 }
 
 ### 更新文章
-PUT localhost:8080/api/articles/2h_oZ4Sd4SaSVdNNClI6y
+PUT localhost:8080/api/articles/Vh2rflHI86smBYKVQd4H2
 Content-Type: application/json
 token: {{auth_token}}
 
@@ -97,5 +97,9 @@ token: {{auth_token}}
 }
 
 ### 删除文章
-DELETE localhost:8080/api/articles/2h_oZ4Sd4SaSVdNNClI6y
+DELETE localhost:8080/api/articles/Vh2rflHI86smBYKVQd4H2
+token: {{auth_token}}
+
+### 测试
+GET localhost:8080/api/articles/test
 token: {{auth_token}}

@@ -1,5 +1,6 @@
 package com.example.blog.controller
 
+import com.example.blog.annotation.CurrentUser
 import com.example.blog.annotation.LoginRequired
 import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.User
@@ -7,6 +8,7 @@ import com.example.blog.domain.dto.ArticleModifyDto
 import com.example.blog.domain.dto.ArticleViewDto
 import com.example.blog.domain.mapper.ArticleMapper
 import com.example.blog.repo.ArticleRepository
+import org.slf4j.LoggerFactory
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
@@ -22,6 +24,8 @@ class ArticleController(
     private val articleRepository: ArticleRepository,
     private val articleMapper: ArticleMapper
 ) {
+
+    val logger = LoggerFactory.getLogger(ArticleController::class.java)
 
     @GetMapping
     fun findAll(
@@ -60,7 +64,7 @@ class ArticleController(
 
 
     fun updateArticle(
-        request: HttpServletRequest,
+        user: User,
         id: String,
         modifyDto: ArticleModifyDto
     ): CommonResponse<ArticleViewDto> {
@@ -68,7 +72,6 @@ class ArticleController(
             articleRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "文章不存在")
 
         // 校验权限
-        val user = request.getAttribute("user") as User
         if (article.author.id != user.id) throw ResponseStatusException(HttpStatus.FORBIDDEN, "权限不足")
 
         articleMapper.partialUpdate(modifyDto, article)
@@ -79,27 +82,26 @@ class ArticleController(
     @LoginRequired
     @PutMapping("/{id}")
     fun update(
-        request: HttpServletRequest,
+        @CurrentUser user: User,
         @Validated @RequestBody modifyDto: ArticleModifyDto,
         @PathVariable id: String
-    ) = updateArticle(request, id, modifyDto)
+    ) = updateArticle(user, id, modifyDto)
 
     @LoginRequired
     @PatchMapping("/{id}")
     fun patch(
-        request: HttpServletRequest,
+        @CurrentUser user: User,
         @PathVariable id: String,
         @RequestBody modifyDto: ArticleModifyDto
-    ) = updateArticle(request, id, modifyDto)
+    ) = updateArticle(user, id, modifyDto)
 
     @LoginRequired
     @DeleteMapping("/{id}")
-    fun delete(request: HttpServletRequest, @PathVariable id: String): CommonResponse<Nothing> {
+    fun delete(@CurrentUser user: User, @PathVariable id: String): CommonResponse<Nothing> {
         val article =
             articleRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "文章不存在")
 
         // 校验权限
-        val user = request.getAttribute("user") as User
         if (article.author.id != user.id) throw ResponseStatusException(HttpStatus.FORBIDDEN, "权限不足")
 
         articleRepository.delete(article)
