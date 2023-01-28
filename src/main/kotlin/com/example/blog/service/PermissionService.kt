@@ -1,6 +1,7 @@
 package com.example.blog.service
 
 import com.example.blog.annotation.PermissionCheck
+import com.example.blog.annotation.RoleCheck
 import com.example.blog.repo.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
@@ -27,5 +28,17 @@ class PermissionService(
             requirePermissions.none { it !in userPermissions }
         else
             requirePermissions.any { it in userPermissions }
+    }
+
+    fun checkRole(roleCheck: RoleCheck): Boolean {
+        val currentUser = UserHolder.threadLocal.get()
+        val user = userRepository.findByIdOrNull(currentUser.id!!)!!
+
+        val userRoles = user.roles.map { it.name }
+        val requireRoles = roleCheck.value
+        return if (roleCheck.requireAll)
+            requireRoles.none { it !in userRoles }
+        else
+            requireRoles.any { it in userRoles }
     }
 }

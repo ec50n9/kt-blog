@@ -1,6 +1,7 @@
 package com.example.blog.aspect
 
 import com.example.blog.annotation.PermissionCheck
+import com.example.blog.annotation.RoleCheck
 import com.example.blog.service.PermissionService
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.Aspect
@@ -29,6 +30,20 @@ class PermissionAspect(private val permissionService: PermissionService) {
         logger.info("需要权限：${permissions.joinToString()}")
         // 验证是否有权限
         if (!permissionService.checkPermission(method, requestUrl, permissionCheck))
+            throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "权限不足")
+    }
+
+    @Before("@annotation(roleCheck)")
+    fun checkRole(joinPoint: JoinPoint, roleCheck: RoleCheck) {
+        // 获取请求信息
+        val request = (RequestContextHolder.getRequestAttributes() as ServletRequestAttributes).request
+        val method = request.method
+        val requestUrl = request.requestURI
+        val roles = roleCheck.value
+        logger.info("$method: $requestUrl")
+        logger.info("需要角色：${roles.joinToString()}")
+        // 验证是否有权限
+        if (!permissionService.checkRole(roleCheck))
             throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "权限不足")
     }
 }
