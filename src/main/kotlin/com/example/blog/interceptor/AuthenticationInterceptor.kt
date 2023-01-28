@@ -3,6 +3,7 @@ package com.example.blog.interceptor
 import com.example.blog.annotation.LoginRequired
 import com.example.blog.domain.CommonResponse
 import com.example.blog.repo.UserRepository
+import com.example.blog.service.UserHolder
 import com.example.blog.utils.JWTUtils
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.Logger
@@ -64,7 +65,8 @@ class AuthenticationInterceptor : HandlerInterceptor {
             return false
         }
 
-        request.setAttribute("user", user)
+        // request.setAttribute("user", user)
+        UserHolder.threadLocal.set(user)
         return true
     }
 
