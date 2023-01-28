@@ -1,3 +1,11 @@
 ### 测试
 GET localhost:8080/api/test/hello
 token: {{auth_token}}
+
+### 需要登录的接口
+GET localhost:8080/api/test/isLogin
+token: {{auth_token}}
+
+### 获取当前登录用户
+GET localhost:8080/api/test/user
+token: {{auth_token}}
