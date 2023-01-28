@@ -1,5 +1,6 @@
-package com.example.blog.interceptor
+package com.example.blog.config
 
+import com.example.blog.interceptor.AuthenticationInterceptor
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry

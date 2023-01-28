@@ -1,4 +1,4 @@
-package com.example.blog.conf
+package com.example.blog.config
 
 import com.example.blog.domain.Article
 import com.example.blog.domain.User
