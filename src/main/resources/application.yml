@@ -22,3 +22,5 @@ blog:
   banner:
     title: Warning
     content: The blog will be down tomorrow
+  jwt:
+    token-name: token
