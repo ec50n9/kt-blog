@@ -1,8 +1,6 @@
 package com.example.blog.aspect
 
-import com.example.blog.BlogProperties
 import com.example.blog.annotation.LoginRequired
-import com.example.blog.repo.UserRepository
 import com.example.blog.service.AuthService
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.Aspect
@@ -12,11 +10,7 @@ import org.springframework.stereotype.Component
 
 @Aspect
 @Component
-class LoginAspect(
-    private val blogProperties: BlogProperties,
-    private val userRepository: UserRepository,
-    private val authService: AuthService
-) {
+class LoginAspect(private val authService: AuthService) {
 
     private val logger = LoggerFactory.getLogger(LoginAspect::class.java)
 
