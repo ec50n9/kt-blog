@@ -36,5 +36,9 @@ class User(
     var firstname: String,
     var lastname: String,
     var description: String? = null,
-    @Id @GeneratedValue var id: Long? = null
+
+    @Id
+    @GenericGenerator(name = "nanoIdGenerator", strategy = "com.example.blog.domain.NanoIdGenerator")
+    @GeneratedValue(generator = "nanoIdGenerator", strategy = GenerationType.SEQUENCE)
+    var id: String? = null
 )

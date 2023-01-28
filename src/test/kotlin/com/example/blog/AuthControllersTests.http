@@ -27,6 +27,7 @@ GET localhost:8080/api/users/sugar
 ### 创建用户
 POST localhost:8080/api/users
 Content-Type: application/json
+token: {{auth_token}}
 
 {
   "username": "sugar",
@@ -97,9 +98,5 @@ token: {{auth_token}}
 }
 
 ### 删除文章
-DELETE localhost:8080/api/articles/Vh2rflHI86smBYKVQd4H2
-token: {{auth_token}}
-
-### 测试
-GET localhost:8080/api/articles/test
+DELETE localhost:8080/api/articles/Gop88GcKzbFaoLhvX5loX
 token: {{auth_token}}

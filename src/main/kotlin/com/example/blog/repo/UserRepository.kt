@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 
-interface UserRepository : CrudRepository<User, Long> {
+interface UserRepository : CrudRepository<User, String> {
 
     fun findByUsername(username: String): User?
 

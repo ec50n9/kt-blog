@@ -21,7 +21,7 @@ abstract class ArticleMapper {
 
     @Component
     class UserTranslator(private val userRepository: UserRepository) {
-        fun getUserById(id: Long) =
+        fun getUserById(id: String) =
             userRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
     }
 

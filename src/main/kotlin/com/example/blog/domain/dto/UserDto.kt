@@ -8,7 +8,7 @@ data class UserViewDto(
     var firstname: String? = null,
     var lastname: String? = null,
     var description: String? = null,
-    var id: Long? = null
+    var id: String? = null
 ) : Serializable
 
 data class UserModifyDto(

@@ -1,7 +1,6 @@
 package com.example.blog.controller
 
 import com.example.blog.annotation.LoginRequired
-import com.example.blog.annotation.NotResponseAdvice
 import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.dto.UserModifyDto
 import com.example.blog.domain.dto.UserViewDto
@@ -22,13 +21,12 @@ class UserController(
     private val userMapper: UserMapper
 ) {
 
-    @NotResponseAdvice
     @GetMapping
     fun findAll(
         @RequestParam(defaultValue = "1") page: Int,
         @RequestParam(defaultValue = "10") size: Int
     ): Iterable<UserViewDto> {
-        val pageRequest = PageRequest.of(page, size, Sort.by("username"))
+        val pageRequest = PageRequest.of(page - 1, size, Sort.by("username"))
         val userList = userRepository.findAll(pageRequest)
         return userMapper.toDto(userList)
     }
@@ -57,7 +55,10 @@ class UserController(
 
     @LoginRequired
     @PutMapping("/{id}")
-    fun update(@Validated @RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
+    fun update(
+        @Validated @RequestBody modifyDto: UserModifyDto,
+        @PathVariable id: String
+    ): CommonResponse<UserViewDto> {
         val entity = userMapper.toEntity(modifyDto)
         entity.id = id
         val user = userRepository.save(entity)
@@ -66,7 +67,7 @@ class UserController(
 
     @LoginRequired
     @PatchMapping("/{id}")
-    fun patch(@RequestBody modifyDto: UserModifyDto, @PathVariable id: Long): CommonResponse<UserViewDto> {
+    fun patch(@RequestBody modifyDto: UserModifyDto, @PathVariable id: String): CommonResponse<UserViewDto> {
         var user =
             userRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
         userMapper.partialUpdate(modifyDto, user)
@@ -76,7 +77,7 @@ class UserController(
 
     @LoginRequired
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: Long): CommonResponse<Nothing> {
+    fun delete(@PathVariable id: String): CommonResponse<Nothing> {
         val user =
             userRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "用户不存在")
         userRepository.delete(user)
