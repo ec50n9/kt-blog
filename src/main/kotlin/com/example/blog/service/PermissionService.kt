@@ -20,7 +20,7 @@ class PermissionService(
     ): Boolean {
         val currentUser = UserHolder.threadLocal.get()
         val user = userRepository.findByIdOrNull(currentUser.id!!)!!
-        logger.info("${user.username}: ${user.roles.joinToString()}")
+
         val userPermissions = user.roles.flatMap { it.permissions }.map { it.name }
         val requirePermissions = permissionCheck.value
         return if (permissionCheck.requireAll)
