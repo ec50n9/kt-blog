@@ -37,8 +37,49 @@ class User(
     var lastname: String,
     var description: String? = null,
 
+    @ManyToMany(cascade = [CascadeType.ALL])
+    @JoinTable(
+        name = "user_role",
+        joinColumns = [JoinColumn(name = "user_id")],
+        inverseJoinColumns = [JoinColumn(name = "role_id")]
+    )
+    var roles: Set<Role> = hashSetOf(),
+
     @Id
-    @GenericGenerator(name = "nanoIdGenerator", strategy = "com.example.blog.domain.NanoIdGenerator")
-    @GeneratedValue(generator = "nanoIdGenerator", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nanoIdGenerator")
+    var id: String? = null
+)
+
+@Entity
+class Role(
+    var name: String,
+
+    @ManyToMany(mappedBy = "roles")
+    var users: Set<User> = hashSetOf(),
+
+    @ManyToMany(cascade = [CascadeType.ALL])
+    @JoinTable(
+        name = "role_permission",
+        joinColumns = [JoinColumn(name = "role_id")],
+        inverseJoinColumns = [JoinColumn(name = "permission_id")]
+    )
+    var permissions: Set<Permission> = hashSetOf(),
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nanoIdGenerator")
+    var id: String? = null
+)
+
+@Entity
+class Permission(
+    var name: String,
+    var url: String,
+    var method: String,
+
+    @ManyToMany(mappedBy = "permissions")
+    var roles: Set<Role> = hashSetOf(),
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nanoIdGenerator")
     var id: String? = null
 )
