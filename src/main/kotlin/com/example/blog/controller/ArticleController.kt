@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
-import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/articles")
@@ -46,16 +45,14 @@ class ArticleController(
         return articleMapper.toDto(article)
     }
 
-    @LoginRequired
     @PostMapping
     fun create(
-        request: HttpServletRequest,
+        @CurrentUser user: User,
         @Validated @RequestBody modifyDto: ArticleModifyDto
     ): CommonResponse<ArticleViewDto> {
         val entity = articleMapper.toEntity(modifyDto)
 
         // 设置作者
-        val user = request.getAttribute("user") as User
         entity.author = user
 
         val article = articleRepository.save(entity)
