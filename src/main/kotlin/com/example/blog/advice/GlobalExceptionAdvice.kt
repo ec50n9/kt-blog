@@ -15,6 +15,9 @@ class GlobalExceptionAdvice {
 
     private val log = LoggerFactory.getLogger(RestControllerAdvice::class.java)
 
+    /**
+     * 表单校验
+     */
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleNotValidException(e: MethodArgumentNotValidException): CommonResponse<Nothing> {
         val errors = e.fieldErrors
@@ -29,14 +32,23 @@ class GlobalExceptionAdvice {
     fun handleResponseStatusException(e: ResponseStatusException) =
         CommonResponse.fail(e.reason ?: "", e.status)
 
+    /**
+     * 请求体格式错误
+     */
     @ExceptionHandler(HttpMessageNotReadableException::class)
     fun handleHttpMessageNotReadableException(e: HttpMessageNotReadableException) =
         CommonResponse.fail("请求体格式有误")
 
+    /**
+     * 缺少请求参数
+     */
     @ExceptionHandler(MissingServletRequestParameterException::class)
     fun handleMissingParameterException(e: MissingServletRequestParameterException) =
         CommonResponse.fail("缺失字段: ${e.parameterName}", HttpStatus.BAD_REQUEST)
 
+    /**
+     * 通用错误
+     */
     @ExceptionHandler(Exception::class)
     fun handleException(e: Exception): CommonResponse<Nothing> {
         log.error("未处理的错误:")
