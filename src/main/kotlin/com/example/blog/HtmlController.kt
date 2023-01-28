@@ -1,5 +1,6 @@
 package com.example.blog
 
+import com.example.blog.config.BlogProperties
 import com.example.blog.domain.Article
 import com.example.blog.domain.User
 import com.example.blog.repo.ArticleRepository

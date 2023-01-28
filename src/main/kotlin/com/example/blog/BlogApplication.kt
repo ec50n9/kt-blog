@@ -1,5 +1,6 @@
 package com.example.blog
 
+import com.example.blog.config.BlogProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication

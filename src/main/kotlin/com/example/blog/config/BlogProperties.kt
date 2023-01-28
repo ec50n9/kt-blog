@@ -1,4 +1,4 @@
-package com.example.blog
+package com.example.blog.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding

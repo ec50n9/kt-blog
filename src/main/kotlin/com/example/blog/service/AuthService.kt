@@ -1,7 +1,7 @@
 package com.example.blog.service
 
-import com.example.blog.BlogProperties
 import com.example.blog.annotation.LoginRequired
+import com.example.blog.config.BlogProperties
 import com.example.blog.domain.User
 import com.example.blog.repo.UserRepository
 import com.example.blog.utils.JWTUtils
