@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor
 import javax.servlet.http.HttpServletRequest
@@ -30,7 +31,7 @@ class AuthenticationInterceptor : HandlerInterceptor {
         // 获取 token
         val token = request.getHeader(TOKEN_NAME)
         if (null == token || "" == token.trim()) {
-            writeResponse(response, CommonResponse.fail("缺少 $TOKEN_NAME 字段"))
+            writeResponse(response, CommonResponse.fail("请登录", HttpStatus.BAD_REQUEST))
             return false
         }
         log.info("==========token: $token")
@@ -39,24 +40,27 @@ class AuthenticationInterceptor : HandlerInterceptor {
         val username = JWTUtils.decodeTokenAndGetUsername(token)
         if (username == null) {
             log.error("==========用户名为空")
-            writeResponse(response, CommonResponse.fail("传入的 $TOKEN_NAME 无效"))
+            writeResponse(response, CommonResponse.fail("登录信息无效", HttpStatus.BAD_REQUEST))
             return false
         }
 
+        // 检查用户是否存在
         val user = userRepository.findByUsername(username)
         if (user == null) {
             log.error("==========用户 $username 不存在")
-            writeResponse(response, CommonResponse.fail("传入的 $TOKEN_NAME 无效"))
+            writeResponse(response, CommonResponse.fail("用户不存在", HttpStatus.UNAUTHORIZED))
             return false
         }
 
+        // 用户单点登录
         if (user.token != token) {
             if (user.token == null) {
                 log.error("==========用户未登录")
+                writeResponse(response, CommonResponse.fail("用户未登录，请重新登录", HttpStatus.UNAUTHORIZED))
             } else {
                 log.error("==========用户在其它地方登录")
+                writeResponse(response, CommonResponse.fail("登录信息过期，请重新登录", HttpStatus.UNAUTHORIZED))
             }
-            writeResponse(response, CommonResponse.fail("传入的 $TOKEN_NAME 无效"))
             return false
         }
 
