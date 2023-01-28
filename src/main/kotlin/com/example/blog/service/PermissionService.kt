@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
+/**
+ * 权限业务
+ */
 @Service
 class PermissionService(
     private val userRepository: UserRepository,
@@ -15,6 +18,9 @@ class PermissionService(
 
     private val logger = LoggerFactory.getLogger(PermissionService::class.java)
 
+    /**
+     * 检查权限是否匹配
+     */
     fun checkPermission(
         method: String,
         requestUrl: String,
@@ -31,6 +37,9 @@ class PermissionService(
             requirePermissions.any { it in userPermissions }
     }
 
+    /**
+     * 检查角色是否匹配
+     */
     fun checkRole(roleCheck: RoleCheck): Boolean {
         val currentUser = authService.getCurrentUser()
         val user = userRepository.findByIdOrNull(currentUser.id!!)!!

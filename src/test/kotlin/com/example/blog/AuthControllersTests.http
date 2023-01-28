@@ -37,8 +37,9 @@ token: {{auth_token}}
 }
 
 ### 更新用户
-PUT localhost:8080/api/users/1
+PUT localhost:8080/api/users/hPhDVoFlN74Ynqrhqwi3m
 Content-Type: application/json
+token: {{auth_token}}
 
 {
   "username": "shello",
@@ -57,7 +58,8 @@ Content-Type: application/json
 }
 
 ### 删除用户
-DELETE localhost:8080/api/users/4
+DELETE localhost:8080/api/users/hPhDVoFlN74Ynqrhqwi3m
+token: {{auth_token}}
 
 ### 文章列表
 GET localhost:8080/api/articles?page=1

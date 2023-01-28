@@ -12,6 +12,9 @@ import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.context.request.ServletRequestAttributes
 import org.springframework.web.server.ResponseStatusException
 
+/**
+ * 用户登录业务
+ */
 @Service
 class AuthService(
     private val userRepository: UserRepository,
@@ -23,6 +26,10 @@ class AuthService(
 
     private val logger = LoggerFactory.getLogger(AuthService::class.java)
 
+    /**
+     * 从请求头中获取登录数据，并且获取到当前登录的用户，存在线程变量中
+     * 只在 @LoginRequired 的处理逻辑中调用
+     */
     fun initCurrentUserFromRequest() {
         // 获取请求信息
         val request = (RequestContextHolder.getRequestAttributes() as ServletRequestAttributes).request
@@ -51,6 +58,9 @@ class AuthService(
         currentUser.set(user)
     }
 
+    /**
+     * 获取当前登录用户，前提是已经登录
+     */
     @LoginRequired
     fun getCurrentUser(): User = currentUser.get()
 }
