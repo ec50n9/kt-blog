@@ -28,7 +28,7 @@ class PermissionAspect(private val permissionService: PermissionService) {
         logger.info("$method: $requestUrl")
         logger.info("需要权限：${permissions.joinToString()}")
         // 验证是否有权限
-        if (!permissionService.checkPermission(method, requestUrl, permissions))
+        if (!permissionService.checkPermission(method, requestUrl, permissionCheck))
             throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "权限不足")
     }
 }
