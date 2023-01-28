@@ -21,7 +21,7 @@ class AuthService(
     private val blogProperties: BlogProperties
 ) {
     companion object {
-        private val currentUser = ThreadLocal<User>()
+        private val currentUser = ThreadLocal<User?>()
     }
 
     private val logger = LoggerFactory.getLogger(AuthService::class.java)
@@ -59,8 +59,13 @@ class AuthService(
     }
 
     /**
+     * 检查 currentUser 是否未初始化
+     */
+    fun currentUserNotInit() = currentUser.get() == null
+
+    /**
      * 获取当前登录用户，前提是已经登录
      */
     @LoginRequired
-    fun getCurrentUser(): User = currentUser.get()
+    fun getCurrentUser(): User = currentUser.get()!!
 }

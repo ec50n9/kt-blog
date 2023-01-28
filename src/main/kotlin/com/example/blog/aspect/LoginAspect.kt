@@ -22,7 +22,7 @@ class LoginAspect(
 
     @Before("@within(loginRequired) || @annotation(loginRequired)")
     fun checkLogin(joinPoint: JoinPoint, loginRequired: LoginRequired) {
-        if (loginRequired.required)
+        if (loginRequired.required && authService.currentUserNotInit())
             authService.initCurrentUserFromRequest()
     }
 }
