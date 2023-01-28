@@ -43,7 +43,7 @@ class User(
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
-    var roles: Set<Role> = hashSetOf(),
+    var roles: MutableSet<Role> = mutableSetOf(),
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nanoIdGenerator")
@@ -55,7 +55,7 @@ class Role(
     var name: String,
 
     @ManyToMany(mappedBy = "roles", targetEntity = User::class)
-    var users: Set<User> = hashSetOf(),
+    var users: MutableSet<User> = mutableSetOf(),
 
     @ManyToMany(cascade = [CascadeType.ALL], targetEntity = Permission::class)
     @JoinTable(
@@ -63,7 +63,7 @@ class Role(
         joinColumns = [JoinColumn(name = "role_id")],
         inverseJoinColumns = [JoinColumn(name = "permission_id")]
     )
-    var permissions: Set<Permission> = hashSetOf(),
+    var permissions: MutableSet<Permission> = mutableSetOf(),
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nanoIdGenerator")
@@ -77,7 +77,7 @@ class Permission(
     var method: String,
 
     @ManyToMany(mappedBy = "permissions", targetEntity = Role::class)
-    var roles: Set<Role> = hashSetOf(),
+    var roles: MutableSet<Role> = mutableSetOf(),
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nanoIdGenerator")
