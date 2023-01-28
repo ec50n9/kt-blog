@@ -68,7 +68,6 @@ class BlogConfiguration(
         )
         ec50n9.roles.add(roleAdmin)
         userRepository.save(ec50n9)
-        println("config: ${ec50n9.roles.joinToString()}")
         articleRepository.save(
             Article(
                 title = "Reactor Bismuth is out",
