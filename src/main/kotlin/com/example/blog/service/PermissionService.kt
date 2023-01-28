@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class PermissionService(
     private val userRepository: UserRepository,
+    private val authService: AuthService
 ) {
 
     private val logger = LoggerFactory.getLogger(PermissionService::class.java)
@@ -17,9 +18,9 @@ class PermissionService(
     fun checkPermission(
         method: String,
         requestUrl: String,
-        permissionCheck: PermissionCheck
+        permissionCheck: PermissionCheck,
     ): Boolean {
-        val currentUser = UserHolder.threadLocal.get()
+        val currentUser = authService.getCurrentUser()
         val user = userRepository.findByIdOrNull(currentUser.id!!)!!
 
         val userPermissions = user.roles.flatMap { it.permissions }.map { it.name }
@@ -31,7 +32,7 @@ class PermissionService(
     }
 
     fun checkRole(roleCheck: RoleCheck): Boolean {
-        val currentUser = UserHolder.threadLocal.get()
+        val currentUser = authService.getCurrentUser()
         val user = userRepository.findByIdOrNull(currentUser.id!!)!!
 
         val userRoles = user.roles.map { it.name }

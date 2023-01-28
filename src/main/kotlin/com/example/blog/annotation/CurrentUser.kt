@@ -1,19 +1,23 @@
 package com.example.blog.annotation
 
-import com.example.blog.domain.User
+import com.example.blog.service.AuthService
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.MethodParameter
 import org.springframework.web.bind.support.WebDataBinderFactory
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.method.support.ModelAndViewContainer
-import javax.servlet.http.HttpServletRequest
 
 @Target(AnnotationTarget.VALUE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)
 annotation class CurrentUser
 
 class CurrentUserArgumentResolver : HandlerMethodArgumentResolver {
+
+    @Autowired
+    private lateinit var authService: AuthService
+
     val logger = LoggerFactory.getLogger(CurrentUserArgumentResolver::class.java)
 
     override fun supportsParameter(parameter: MethodParameter) =
@@ -25,7 +29,6 @@ class CurrentUserArgumentResolver : HandlerMethodArgumentResolver {
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?
     ): Any {
-        val request = webRequest.getNativeRequest(HttpServletRequest::class.java)
-        return request?.getAttribute("user") as User
+        return authService.getCurrentUser()
     }
 }
