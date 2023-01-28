@@ -1,5 +1,6 @@
 package com.example.blog.controller
 
+import com.example.blog.annotation.LoginRequired
 import com.example.blog.annotation.PermissionCheck
 import com.example.blog.domain.CommonResponse
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/test")
 class TestController {
 
-    @PermissionCheck(["test", "hello"])
+    @LoginRequired
+    @PermissionCheck(["test", "hello"], true)
     @GetMapping("/hello")
     fun hello(): CommonResponse<String> {
         return CommonResponse.ok("hello")
