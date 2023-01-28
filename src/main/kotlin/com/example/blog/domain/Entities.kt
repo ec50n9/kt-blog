@@ -37,7 +37,7 @@ class User(
     var lastname: String,
     var description: String? = null,
 
-    @ManyToMany(cascade = [CascadeType.ALL])
+    @ManyToMany(cascade = [CascadeType.ALL], targetEntity = Role::class)
     @JoinTable(
         name = "user_role",
         joinColumns = [JoinColumn(name = "user_id")],
@@ -54,10 +54,10 @@ class User(
 class Role(
     var name: String,
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", targetEntity = User::class)
     var users: Set<User> = hashSetOf(),
 
-    @ManyToMany(cascade = [CascadeType.ALL])
+    @ManyToMany(cascade = [CascadeType.ALL], targetEntity = Permission::class)
     @JoinTable(
         name = "role_permission",
         joinColumns = [JoinColumn(name = "role_id")],
@@ -76,7 +76,7 @@ class Permission(
     var url: String,
     var method: String,
 
-    @ManyToMany(mappedBy = "permissions")
+    @ManyToMany(mappedBy = "permissions", targetEntity = Role::class)
     var roles: Set<Role> = hashSetOf(),
 
     @Id
