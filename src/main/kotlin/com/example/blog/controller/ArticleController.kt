@@ -1,7 +1,6 @@
 package com.example.blog.controller
 
 import com.example.blog.annotation.CurrentUser
-import com.example.blog.annotation.LoginRequired
 import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.User
 import com.example.blog.domain.dto.ArticleModifyDto
@@ -76,7 +75,6 @@ class ArticleController(
         return CommonResponse.ok(articleMapper.toDto(article), "更新成功")
     }
 
-    @LoginRequired
     @PutMapping("/{id}")
     fun update(
         @CurrentUser user: User,
@@ -84,7 +82,6 @@ class ArticleController(
         @PathVariable id: String
     ) = updateArticle(user, id, modifyDto)
 
-    @LoginRequired
     @PatchMapping("/{id}")
     fun patch(
         @CurrentUser user: User,
@@ -92,7 +89,6 @@ class ArticleController(
         @RequestBody modifyDto: ArticleModifyDto
     ) = updateArticle(user, id, modifyDto)
 
-    @LoginRequired
     @DeleteMapping("/{id}")
     fun delete(@CurrentUser user: User, @PathVariable id: String): CommonResponse<Nothing> {
         val article =

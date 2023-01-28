@@ -8,16 +8,14 @@ import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.User
 import com.example.blog.domain.dto.UserViewDto
 import com.example.blog.domain.mapper.UserMapper
-import com.example.blog.service.AuthService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/test")
-class TestController(private val authService: AuthService, private val userMapper: UserMapper) {
+class TestController(private val userMapper: UserMapper) {
 
-    @LoginRequired
     @PermissionCheck(["test", "hello"], false)
     @RoleCheck(["admin", "gogog"], true)
     @GetMapping("/hello")
