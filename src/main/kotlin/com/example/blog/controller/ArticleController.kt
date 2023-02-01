@@ -1,6 +1,7 @@
 package com.example.blog.controller
 
 import com.example.blog.annotation.CurrentUser
+import com.example.blog.domain.Article
 import com.example.blog.domain.CommonResponse
 import com.example.blog.domain.User
 import com.example.blog.domain.dto.ArticleModifyDto
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
+import java.util.*
 
 @RestController
 @RequestMapping("/api/articles")
@@ -25,22 +27,53 @@ class ArticleController(
 
     val logger = LoggerFactory.getLogger(ArticleController::class.java)
 
+    private fun isValidPage(page: Int, size: Int) =
+        page * size !in 1..10000
+
+    private inline fun <reified T> checkMember(name: String) =
+        T::class.members.none { name == it.name }
+
+    private fun isValidOrder(value: String) =
+        value.uppercase(Locale.US) !in arrayOf("DESC", "ASC")
+
     @GetMapping
     fun findAll(
         @RequestParam(defaultValue = "1") page: Int,
-        @RequestParam(defaultValue = "10") size: Int
+        @RequestParam(defaultValue = "10") size: Int,
+        @RequestParam(defaultValue = "addedAt") sortBy: String,
+        @RequestParam(defaultValue = "desc") orderBy: String,
+        @RequestParam(defaultValue = "") title: String,
+        @RequestParam(defaultValue = "") author: String,
     ): Iterable<ArticleViewDto> {
-        val pageRequest = PageRequest.of(page - 1, size, Sort.by("addedAt"))
-        val articleList = articleRepository.findAll(pageRequest)
+        // 检查页码
+        if (isValidPage(page, size))
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "页码超出限制")
+        // 检查排序字段是否存在于对象中
+        if (checkMember<Article>(sortBy))
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "$sortBy 字段不存在")
+        // 检查排序方式是否合理
+        if (isValidOrder(orderBy))
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "排序只支持 desc 和 asc")
+        // 分页查询和排序
+        val pageRequest = PageRequest.of(
+            page - 1,
+            size,
+            Sort.by(Sort.Direction.valueOf(orderBy.uppercase()), sortBy)
+        )
+        // 模糊查询
+        val articleList =
+            articleRepository.findByTitleLikeIgnoreCaseAndAuthor_UsernameLikeIgnoreCase(
+                "%$title%",
+                "%$author%",
+                pageRequest
+            )
         return articleMapper.toDto(articleList)
     }
 
     @GetMapping("/{id}")
     fun findOne(@PathVariable id: String): ArticleViewDto {
-        val article = articleRepository.findByIdOrNull(id) ?: throw ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "文章不存在"
-        )
+        val article = articleRepository.findByIdOrNull(id)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "文章不存在")
         return articleMapper.toDto(article)
     }
 
