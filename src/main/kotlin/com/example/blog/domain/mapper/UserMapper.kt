@@ -12,10 +12,13 @@ import org.mapstruct.*
 )
 abstract class UserMapper {
 
+    fun getUsername(user: User?) = user?.username
+
     abstract fun toDto(user: User): UserViewDto
 
     abstract fun toDto(users: Iterable<User>): Iterable<UserViewDto>
 
+    @Mapping(target = "roles", ignore = true)
     abstract fun toEntity(userModifyDto: UserModifyDto): User
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
