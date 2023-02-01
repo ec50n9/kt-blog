@@ -72,14 +72,14 @@ class ArticleController(
         id: String,
         modifyDto: ArticleModifyDto
     ): CommonResponse<ArticleViewDto> {
-        var article =
+        val article =
             articleRepository.findByIdOrNull(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "文章不存在")
 
         // 校验权限
         if (article.author.id != user.id) throw ResponseStatusException(HttpStatus.FORBIDDEN, "权限不足")
 
         articleMapper.partialUpdate(modifyDto, article)
-        article = articleRepository.save(article)
+        articleRepository.save(article)
         return CommonResponse.ok(articleMapper.toDto(article), "更新成功")
     }
 

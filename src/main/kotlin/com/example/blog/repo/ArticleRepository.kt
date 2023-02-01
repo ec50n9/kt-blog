@@ -7,10 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface ArticleRepository : JpaRepository<Article, String> {
     fun findAllByOrderByAddedAtDesc(): Iterable<Article>
-    fun findByTitleLikeIgnoreCase(title: String, pageable: Pageable): Page<Article>
     fun findByTitleLikeIgnoreCaseAndAuthor_UsernameLikeIgnoreCase(
-        title: String?,
-        username: String?,
+        title: String,
+        username: String,
         pageable: Pageable
     ): Page<Article>
 }
