@@ -9,8 +9,6 @@ import com.example.blog.domain.dto.ArticleViewDto
 import com.example.blog.domain.mapper.ArticleMapper
 import com.example.blog.repo.ArticleRepository
 import org.slf4j.LoggerFactory
-import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
@@ -23,18 +21,9 @@ import java.util.*
 class ArticleController(
     private val articleRepository: ArticleRepository,
     private val articleMapper: ArticleMapper
-) {
+) : BaseController() {
 
     val logger = LoggerFactory.getLogger(ArticleController::class.java)
-
-    private fun isValidPage(page: Int, size: Int) =
-        page * size !in 1..10000
-
-    private inline fun <reified T> checkMember(name: String) =
-        T::class.members.none { name == it.name }
-
-    private fun isValidOrder(value: String) =
-        value.uppercase(Locale.US) !in arrayOf("DESC", "ASC")
 
     @GetMapping
     fun findAll(
@@ -45,21 +34,7 @@ class ArticleController(
         @RequestParam(defaultValue = "") title: String,
         @RequestParam(defaultValue = "") author: String,
     ): Iterable<ArticleViewDto> {
-        // 检查页码
-        if (isValidPage(page, size))
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "页码超出限制")
-        // 检查排序字段是否存在于对象中
-        if (checkMember<Article>(sortBy))
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "$sortBy 字段不存在")
-        // 检查排序方式是否合理
-        if (isValidOrder(orderBy))
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST, "排序只支持 desc 和 asc")
-        // 分页查询和排序
-        val pageRequest = PageRequest.of(
-            page - 1,
-            size,
-            Sort.by(Sort.Direction.valueOf(orderBy.uppercase()), sortBy)
-        )
+        val pageRequest = createPageRequest<Article>(page, size, orderBy, sortBy)
         // 模糊查询
         val articleList =
             articleRepository.findByTitleLikeIgnoreCaseAndAuthor_UsernameLikeIgnoreCase(
