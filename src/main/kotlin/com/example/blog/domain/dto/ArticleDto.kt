@@ -10,6 +10,10 @@ data class ArticleViewDto(
     var content: String? = null,
     var author: UserViewDto? = null,
     var addedAt: LocalDateTime = LocalDateTime.now(),
+    var createdBy: String? = null,
+    var createdDate: LocalDateTime? = null,
+    var lastModifiedBy: String? = null,
+    var lastModifiedDate: LocalDateTime? = null,
     var id: String? = null
 ) : Serializable
 

@@ -1,6 +1,7 @@
 package com.example.blog.domain.dto
 
 import java.io.Serializable
+import java.time.LocalDateTime
 import javax.validation.constraints.NotBlank
 
 data class UserViewDto(
@@ -8,6 +9,10 @@ data class UserViewDto(
     var firstname: String? = null,
     var lastname: String? = null,
     var description: String? = null,
+    var createdBy: String? = null,
+    var createdDate: LocalDateTime? = null,
+    var lastModifiedBy: String? = null,
+    var lastModifiedDate: LocalDateTime? = null,
     var id: String? = null
 ) : Serializable
 
