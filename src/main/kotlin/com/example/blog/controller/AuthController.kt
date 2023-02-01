@@ -27,7 +27,7 @@ class AuthController(private val repository: UserRepository) {
             return CommonResponse.fail("用户名或密码不正确", HttpStatus.UNAUTHORIZED)
 
         // 生成 token
-        val token = JWTUtils.generateToken(user.username)
+        val token = JWTUtils.generateToken(user.id!!)
 
         // 存储token到用户信息中
         user.token = token
