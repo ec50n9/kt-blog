@@ -14,22 +14,22 @@ object JWTUtils {
     private const val secret = "ec50n9"
     private const val expiration: Long = 30 * 60 * 1000
 
-    fun generateToken(username: String): String =
+    fun generateToken(userId: String): String =
         JWT.create()
             .withExpiresAt(Date(System.currentTimeMillis() + expiration))
-            .withAudience(username)
-            .sign(Algorithm.HMAC256(username + secret))
+            .withAudience(userId)
+            .sign(Algorithm.HMAC256(userId + secret))
 
-    fun decodeTokenAndGetUsername(token: String): String? {
+    fun decodeTokenAndGetUserId(token: String): String? {
         return try {
             // 解析token
             val jwt = JWT.decode(token)
-            val username = jwt.audience[0]
+            val userId = jwt.audience[0]
 
             // 验证token
-            val verifier = JWT.require(Algorithm.HMAC256(username + secret)).build()
+            val verifier = JWT.require(Algorithm.HMAC256(userId + secret)).build()
             verifier.verify(jwt)
-            username
+            userId
         } catch (e: JWTDecodeException) {
             log.error("token 解析错误: $e")
             null

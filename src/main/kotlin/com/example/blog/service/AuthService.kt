@@ -6,6 +6,7 @@ import com.example.blog.domain.User
 import com.example.blog.repo.UserRepository
 import com.example.blog.utils.JWTUtils
 import org.slf4j.LoggerFactory
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.context.request.RequestContextHolder
@@ -41,11 +42,11 @@ class AuthService(
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "请登录")
 
         // 校验 token
-        val username = JWTUtils.decodeTokenAndGetUsername(token)
+        val userId = JWTUtils.decodeTokenAndGetUserId(token)
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "登录信息无效")
 
         // 获取用户
-        val user = userRepository.findByUsername(username)
+        val user = userRepository.findByIdOrNull(userId)
             ?: throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "用户不存在")
 
         // 单点登录
