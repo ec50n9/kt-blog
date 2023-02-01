@@ -28,7 +28,6 @@ abstract class ArticleMapper {
 
     abstract fun toDto(articleIterable: Iterable<Article>): Iterable<ArticleViewDto>
 
-//    @Mapping(source = "authorId", target = "author")
     abstract fun toEntity(articleModifyDto: ArticleModifyDto): Article
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
